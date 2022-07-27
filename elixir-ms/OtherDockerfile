@@ -1,0 +1,9 @@
+FROM elixir:1.13.4-alpine
+WORKDIR /app
+EXPOSE 8080
+COPY . /app
+RUN mix local.hex --force \
+ && mix local.rebar --force
+RUN MIX_ENV=dev mix do deps.get, compile, release
+ENTRYPOINT ["/app/_build/dev/rel/elixir_ms/bin/elixir_ms"]
+CMD ["start", "foreground"]

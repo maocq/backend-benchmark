@@ -1,0 +1,72 @@
+version: '2'
+services:
+    java-imperative-ms:
+        container_name: java-imperative-ms
+        build:
+            context: ./java-imperative-ms
+            dockerfile: Dockerfile
+        image: java-imperative-ms:latest
+        ports:
+            - 8090:8080
+        networks:
+            - spring-cloud-network
+    java-reactive-ms:
+        container_name: java-reactive-ms
+        build:
+            context: ./java-reactive-ms
+            dockerfile: Dockerfile
+        image: java-reactive-ms:latest
+        depends_on:
+            - db
+        ports:
+            - 8091:8080
+        networks:
+            - spring-cloud-network
+    elixir-ms:
+        container_name: elixir-ms
+        build:
+            context: ./elixir-ms
+            dockerfile: Dockerfile
+        image: elixir-ms:latest
+        ports:
+            - 8092:8080
+        networks:
+            - spring-cloud-network
+    go-ms:
+        container_name: go-ms
+        build:
+            context: ./go-ms
+            dockerfile: Dockerfile
+        image: go-ms:latest
+        ports:
+            - 8093:8080
+        networks:
+            - spring-cloud-network
+    node-latency:
+        container_name: node-latency
+        build:
+            context: ./node
+            dockerfile: Dockerfile
+        image: node-latency:latest
+        ports:
+            - 3100:8080
+        networks:
+            - spring-cloud-network
+    db:
+        image: 'postgres:13.1-alpine'
+        container_name: db
+        environment:
+            - POSTGRES_USER=compose-postgres
+            - POSTGRES_PASSWORD=compose-postgres
+        ports:
+            - "5432:5432"
+        volumes:
+            - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+        networks:
+            - spring-cloud-network
+networks:
+    spring-cloud-network:
+        driver: bridge
+
+#docker-compose -p xxx up -d
+#docker-compose -p xxx down

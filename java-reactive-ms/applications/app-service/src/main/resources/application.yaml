@@ -1,0 +1,24 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: "JavaReactiveMS"
+  devtools:
+    add-properties: false
+  h2:
+    console:
+      enabled: true
+      path: "/h2"
+  profiles:
+    include: null
+database:
+  database: "compose-postgres"
+  schema: "public"
+  username: "compose-postgres"
+  password: "compose-postgres"
+  host: "${DATABASE_IP:db}"
+  port: 5432
+adapter:
+  restconsumer:
+    timeout: 5000
+    url: "http://${EXTERNAL_SERVICE_IP:node-latency}:8080"

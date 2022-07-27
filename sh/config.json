@@ -1,0 +1,9 @@
+{
+    "url_reposity": "https://github.com/maocq/backend-benchmark",
+    "user": "ubuntu",
+    "key": "/c/Users/john.carmona/Documents/maow/maocq-keypair.pem",
+    "key_name": "maocq-keypair",
+    "instance_type": "t2.micro",
+    "security_group": "sg-06a750fe52622641f",
+    "image_id": "ami-052efd3df9dad4825"    
+}
