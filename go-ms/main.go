@@ -12,9 +12,10 @@ import (
 
 func main() {
 	db := config.InitDB()
+	httpClient := config.GetHttpClient()
 
 	accountRepository := repo.AccountDataRepository{DB: db}
-	helloRepository := rest.HelloHttpRepository{Url: config.GetUrlService()}
+	helloRepository := rest.HelloHttpRepository{Client: httpClient, Url: config.GetUrlService()}
 
 	cases := usecase.CasesUseCase{AccountRepository: &accountRepository, HelloRepository: &helloRepository}
 	hello := usecase.HelloUseCase{HelloRepository: &helloRepository}

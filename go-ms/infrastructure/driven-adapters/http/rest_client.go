@@ -7,7 +7,8 @@ import (
 )
 
 type HelloHttpRepository struct {
-	Url string
+	Client *http.Client
+	Url    string
 }
 
 func (h *HelloHttpRepository) Hello(latency string) (string, error) {
@@ -17,7 +18,7 @@ func (h *HelloHttpRepository) Hello(latency string) (string, error) {
 		return "", err
 	}
 
-	response, err := http.DefaultClient.Do(request)
+	response, err := h.Client.Do(request)
 	if err != nil {
 		return "", err
 	}

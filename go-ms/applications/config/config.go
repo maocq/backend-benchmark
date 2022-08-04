@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 
 	"gorm.io/driver/postgres"
@@ -24,6 +25,17 @@ func InitDB() *gorm.DB {
 	dbConfig.SetMaxOpenConns(10)
 
 	return db
+}
+
+func GetHttpClient() *http.Client {
+	t := http.DefaultTransport.(*http.Transport).Clone()
+	t.MaxIdleConns = 100
+	t.MaxConnsPerHost = 100
+	t.MaxIdleConnsPerHost = 100
+
+	return &http.Client{
+		Transport: t,
+	}
 }
 
 func GetUrlService() string {
