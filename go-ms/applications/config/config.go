@@ -16,6 +16,13 @@ func InitDB() *gorm.DB {
 		panic(err)
 	}
 
+	dbConfig, err := db.DB()
+	if err != nil {
+		panic(err)
+	}
+	dbConfig.SetMaxIdleConns(10)
+	dbConfig.SetMaxOpenConns(10)
+
 	return db
 }
 
