@@ -23,22 +23,25 @@ fi
 
 command=$(echo "docker restart \$(docker ps -a -q)")
 execute_remote_command "$command" "$ip" "$user" "$key" > /dev/tty
-sleep 10
+wait_http "http://$ip:8080/api/hello"
+sleep 1
 
 cp "../jmeter/JMeterBenchmark.jmx" ".tmp/work/JMeterBenchmark-$case.jmx"
 
 
-duration_seconds=$(jq -r ".duration_seconds" "config-jmeter.json")
-ramp_up_period_seconds=$(jq -r ".ramp_up_period_seconds" "config-jmeter.json")
-latency=$(jq -r ".latency" "config-jmeter.json")
-case_one_number_users=$(jq -r ".case_one_number_users" "config-jmeter.json")
-case_two_number_users=$(jq -r ".case_two_number_users" "config-jmeter.json")
-case_three_number_users=$(jq -r ".case_three_number_users" "config-jmeter.json")
-hello_number_users=$(jq -r ".hello_number_users" "config-jmeter.json")
-primes_number_users=$(jq -r ".primes_number_users" "config-jmeter.json")
-get_hello_number_users=$(jq -r ".get_hello_number_users" "config-jmeter.json")
-find_one_number_users=$(jq -r ".find_one_number_users" "config-jmeter.json")
-find_multiple_test_number_users=$(jq -r ".find_multiple_test_number_users" "config-jmeter.json")
+config_jmeter_file="../jmeter/config-jmeter.json"
+
+duration_seconds=$(jq -r ".duration_seconds" "$config_jmeter_file")
+ramp_up_period_seconds=$(jq -r ".ramp_up_period_seconds" "$config_jmeter_file")
+latency=$(jq -r ".latency" "$config_jmeter_file")
+case_one_number_users=$(jq -r ".case_one_number_users" "$config_jmeter_file")
+case_two_number_users=$(jq -r ".case_two_number_users" "$config_jmeter_file")
+case_three_number_users=$(jq -r ".case_three_number_users" "$config_jmeter_file")
+hello_number_users=$(jq -r ".hello_number_users" "$config_jmeter_file")
+primes_number_users=$(jq -r ".primes_number_users" "$config_jmeter_file")
+get_hello_number_users=$(jq -r ".get_hello_number_users" "$config_jmeter_file")
+find_one_number_users=$(jq -r ".find_one_number_users" "$config_jmeter_file")
+find_multiple_test_number_users=$(jq -r ".find_multiple_test_number_users" "$config_jmeter_file")
 
 sed -i -e "s/_SERVICE_IP_/$ip/g" \
     -e "s/_DURATION_SECONDS_/$duration_seconds/g" \

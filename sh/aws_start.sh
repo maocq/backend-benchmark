@@ -17,6 +17,11 @@ image_id=$(jq -r ".image_id" "config.json")
 
 
 case=$1
+stacks=("java-imperative-ms" "java-reactive-ms" "go-ms" "elixir-ms")
+if [[ ! " ${stacks[*]} " =~ " ${case} " ]]; then
+    echo "Invalid option: $case"
+	exit
+fi
 
 
 db_ip=$(start "$case-db" "db" "$image_id" "$instance_type" "$user" "$key" "$key_name" "$security_group")
