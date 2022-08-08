@@ -21,7 +21,7 @@ else
     tests_ip=$(jq -r ".ip" ".tmp/ip/$case-tests.json")  
 fi
 
-command=$(echo "docker restart \$(docker ps -a -q)")
+command="docker restart \$(docker ps -a -q)"
 execute_remote_command "$command" "$ip" "$user" "$key" > /dev/tty
 wait_http "http://$ip:8080/api/hello"
 sleep 1

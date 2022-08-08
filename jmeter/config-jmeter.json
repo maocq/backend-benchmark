@@ -1,12 +1,12 @@
 {
     "duration_seconds" : 300,
     "ramp_up_period_seconds": 10,
-    "latency": 80,
+    "latency": 50,
     "hello_number_users": 0,
-    "case_one_number_users": 0,
+    "case_one_number_users": 800,
     "case_two_number_users": 0,
     "case_three_number_users": 0,
-    "get_hello_number_users": 800,
+    "get_hello_number_users": 0,
     "primes_number_users": 0,
     "find_one_number_users": 0,
     "find_multiple_test_number_users": 0

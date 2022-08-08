@@ -44,7 +44,7 @@ scenarios=(
 )
 
 for scenario in "${scenarios[@]}"; do
-    command=$(echo "docker restart \$(docker ps -a -q)")
+    command="docker restart \$(docker ps -a -q)"
     execute_remote_command "$command" "$ip" "$user" "$key" > /dev/tty
 
     url="$host$scenario"

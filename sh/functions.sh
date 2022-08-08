@@ -128,7 +128,7 @@ get_and_save_instance_ip() {
 	local name=$2
 
 	instance_ip=$(aws ec2 describe-instances --instance-ids "$instance_id" | jq -r '.Reservations[].Instances[].PublicIpAddress')
-	jq --null-input --arg ip "$instance_ip" '{"ip": $ip}' > ".tmp/ip/$name.json"
+	jq --null-input --arg ip "$instance_ip" --arg id "$instance_id" '{"ip": $ip, "instanceId": $id}' > ".tmp/ip/$name.json"
 
 	echo $instance_ip;
 	return 0;

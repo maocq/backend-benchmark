@@ -24,14 +24,14 @@ fi
 
 scenarios=(
     #"hello"
-    "case-one?latency=50"
+    #"case-one?latency=50"
     #"case-one?latency=200"
     #"case-one?latency=500"
     #"case-two?latency=50"
     #"case-two?latency=200"
     #"case-two?latency=500"
     #"case-three"
-    #"get-hello?latency=50"
+    "get-hello?latency=80"
     #"get-hello?latency=100"
     #"get-hello?latency=200"
     #"get-hello?latency=500"
@@ -40,7 +40,7 @@ scenarios=(
 
 
 for scenario in "${scenarios[@]}"; do
-    command=$(echo "docker restart \$(docker ps -a -q)")
+    command="docker restart \$(docker ps -a -q)"
     execute_remote_command "$command" "$ip" "$user" "$key" > /dev/tty
 
     wait_http "http://$ip:8080/api/$scenario"

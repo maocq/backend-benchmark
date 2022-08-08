@@ -29,9 +29,9 @@ func InitDB() *gorm.DB {
 
 func GetHttpClient() *http.Client {
 	t := http.DefaultTransport.(*http.Transport).Clone()
-	t.MaxIdleConns = 100
-	t.MaxConnsPerHost = 100
-	t.MaxIdleConnsPerHost = 100
+	t.MaxIdleConns = 500
+	t.MaxConnsPerHost = 500
+	t.MaxIdleConnsPerHost = 500
 
 	return &http.Client{
 		Transport: t,

@@ -19,6 +19,6 @@ array=($instances)
 for id in "${array[@]}"; do
 	name=$(jq -r ".name" ".tmp/instances/$id.json")
 	ip=$(jq -r ".ip" ".tmp/ip/$name.json")
-	command=$(echo "docker restart \$(docker ps -a -q)")
+	command="docker restart \$(docker ps -a -q)"
 	_out=$(execute_remote_command "$command" "$ip" "$user" "$key")
 done
