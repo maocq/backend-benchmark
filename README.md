@@ -112,7 +112,6 @@ cd sh
 
 #### Case two
 
-![Case two](results/case-two.png)
 ![Case two 100](results/t2.micro/case-two-latency-100.png)
 
 #### Case one + Case two (Together)
