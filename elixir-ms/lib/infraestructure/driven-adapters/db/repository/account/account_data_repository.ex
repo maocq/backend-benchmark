@@ -10,9 +10,10 @@ defmodule ElixirMs.DrivenAdapters.Db.Repository.AccountDataRepository do
   def find_test(), do: find_test_sql().rows |> Enum.map(&row_to_entity/1)
   def find_all(), do: AccountData |> Repo.all |> Enum.map(&to_entity/1)
   def update(entity) do
-    row = to_row(entity)
-    Repo.update!(Ecto.Changeset.change(row, name: inspect(Timex.now))) |> to_entity
-
+    row = %AccountData{id: entity.id}
+    Repo.update!(Ecto.Changeset.change(row, %{user_id: entity.user_id, account: entity.account, name: entity.name, number: entity.number,
+     balance: entity.balance, currency: entity.currency, type: entity.type, bank: entity.bank,
+     creation_date: entity.creation_date, update_date: entity.update_date})) |> to_entity
   end
 
   defp find_one_sql() do

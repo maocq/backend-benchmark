@@ -9,7 +9,9 @@ defmodule ElixirMs.UseCase.CasesUseCase do
          {:ok, _} <- @hello_repository.hello(latency),
          account <- @account_repository.find_by_id(4000),
          {:ok, _} <- @hello_repository.hello(latency) do
-      {:ok, @account_repository.update(account)}
+
+      updated_account = %{account | name: inspect(Timex.now)}
+      {:ok, @account_repository.update(updated_account)}
     end
   end
 

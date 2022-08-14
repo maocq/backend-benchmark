@@ -7,6 +7,8 @@ mkdir -p .tmp/ip
 mkdir -p .tmp/results
 mkdir -p .tmp/work
 
+aws sts get-caller-identity
+
 url_reposity=$(jq -r ".url_reposity" "config.json")
 user=$(jq -r ".user" "config.json")
 key=$(jq -r ".key" "config.json")
