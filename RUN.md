@@ -28,7 +28,7 @@ La información necesaria que debe actualizar es la ubicación de su [llave](htt
 
 Dentro de la configuración del security group es necesario tener las siguientes reglas configuradas con el fin de facilitar las pruebas.
 
-![Security group](security-group.png)
+![Security group](results/security-group.png)
 
 (Esta configuración corresponde a escenarios de pruebas, no usar esta configuración en ambientes productivos)
 
@@ -51,17 +51,17 @@ Para iniciar cada uno de los stack nos apoyamos en el archivo aws_start.sh el cu
 
 La ejecución anterior generará el siguiente ambiente:
 
-![Environment](environment.png)
+![Environment](results/environment.png)
 
-![Start sh](start-sh.png)
+![Start sh](results/start-sh.png)
 
 `...`
 
-![Start sh end](start-sh-end.png)
+![Start sh end](results/start-sh-end.png)
 
 Al final podrá ver la ip asignada al microservicio y la cual puede abrir en un navegador
 
-![Ip navegador](ip-navegador.png)
+![Ip navegador](results/ip-navegador.png)
 
 ### Inicio del benchmark
 
@@ -100,7 +100,7 @@ Una vez tenga la configuración deseada solo debe ejecutar el archivo `sh/test_j
 
 `./test_jmeter.sh java-reactive-ms`
 
-![Jmeter tests](jmeter-tests.png)
+![Jmeter tests](results/jmeter-tests.png)
 
 Los resultados son generados en la ruta `sh\.tmp\results`
 
@@ -110,4 +110,4 @@ Nota: Cada vez que se ejecuta una prueba la instancia es reiniciada con el fin d
 
 Una vez terminadas las pruebas puede ejecutar el archivo clean.sh el cual se encarga de limpiar todo y terminar las instancias usadas.
 
-![Clean sh](clean-sh.png)
+![Clean sh](results/clean-sh.png)
