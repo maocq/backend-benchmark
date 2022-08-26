@@ -26,7 +26,7 @@ Estos son los datos que encontrará en el archivo de configuración:
 
 La información necesaria que debe actualizar es la ubicación de su [llave](https://aws.amazon.com/es/what-is-aws/) (inicio de sesión), nombre de la llave en aws y el security group. 
 
-Dentro de la configuración del security group es necesario con el fin de facilitar las pruebas tener las siguientes reglas configuradas:
+Dentro de la configuración del security group es necesario tener las siguientes reglas configuradas con el fin de facilitar las pruebas.
 
 ![Security group](security-group.png)
 
@@ -72,7 +72,7 @@ Se cuentan con diferentes herramientas para realizar las mediciones:
 - [wrk](https://github.com/wg/wrk)
 - [Performance analyzer](https://github.com/bancolombia/distributed-performance-analyzer)
 
-En este [artículo](https://medium.com/) veremos los resultados arrojados por JMeter ya que es una herramienta común que nos permite ejecutar múltiples escenarios al tiempo y con facilidad de visualización. Además teniendo en cuenta que el comportamiento de los resultados es similares entre las diferentes herramientas.
+En este [artículo](https://medium.com/) veremos los resultados arrojados por JMeter ya que es una herramienta común que nos permite ejecutar múltiples escenarios al tiempo y con facilidad de visualización. Además teniendo en cuenta que el comportamiento de los resultados es similar en las diferentes herramientas.
 
 ### Cómo lanzar escenarios
 
@@ -104,7 +104,7 @@ Una vez tenga la configuración deseada solo debe ejecutar el archivo `sh/test_j
 
 Los resultados son generados en la ruta `sh\.tmp\results`
 
-Nota: Cada vez que se ejecuta una prueba, la instancia es reiniciada con el fin de simular cada caso lo más cercano a los escenarios reales de escalamiento.
+Nota: Cada vez que se ejecuta una prueba la instancia es reiniciada con el fin de simular los casos lo más cercano a escenarios reales.
 
 ### Limpieza
 
