@@ -30,9 +30,9 @@ db_ip=$(start "$case-db" "db" "$image_id" "$instance_type" "$user" "$key" "$key_
 node_ip=$(start "$case-node" "node" "$image_id" "$instance_type" "$user" "$key" "$key_name" "$security_group")
 zipkin_ip=$(start "$case-zipkin" "zipkin" "$image_id" "$instance_type" "$user" "$key" "$key_name" "$security_group")
 
-exporter_endpoint="http://$zipkin_ip:4317"
+exporter_endpoint="http://$zipkin_ip:9411/api/v2/spans"
 
-configuration=$(echo "printf 'DATABASE_IP="$db_ip"\nEXTERNAL_SERVICE_IP="$node_ip"\nOTEL_EXPORTER_OTLP_ENDPOINT="$exporter_endpoint"\nOTEL_TRACES_EXPORTER=zipkin\n' > /tmp/env.list")
+configuration=$(echo "printf 'DATABASE_IP="$db_ip"\nEXTERNAL_SERVICE_IP="$node_ip"\nOTEL_EXPORTER_ZIPKIN_ENDPOINT="$exporter_endpoint"\nOTEL_TRACES_EXPORTER=zipkin\n' > /tmp/env.list")
 ip=$(start "$case" "$case" "$image_id" "$instance_type" "$user" "$key" "$key_name" "$security_group" "$configuration")
 
 echo "http://$ip:8080/api/case-one" > /dev/tty
